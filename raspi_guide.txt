@@ -1,0 +1,48 @@
+
+1. MariaDB 설치
+sudo apt-get install mariadb-server
+
+
+2. DB 접속
+sudo mysql –u root
+
+
+
+3. 외부에서 DB를 접속하기 위해서는 패스워드가 필요
+ALTER USER 'root'@'localhost' IDENTIFIED BY '1234’;
+
+
+
+4. 라즈베리파이에서 사용할 데이터베이스 생성
+create database raspi_db character set utf8 collate utf8_general_ci;
+
+
+
+5.생성한 데이터베이스에 접속
+use raspi_db;
+
+
+
+6.사운드 센서로 수집할 데이터를 저장할 테이블 생성
+create table sound_data(
+sensor varchar(30),
+collect_time datetime,
+led_status int);
+
+
+
+7.터치 센서로 수집할 데이터를 저장할 테이블 생성
+create table touch_data(
+sensor varchar(30),
+collect_time datetime,
+led_status int);
+
+
+
+8.저장
+commit;
+
+
+
+9.종료
+\q
